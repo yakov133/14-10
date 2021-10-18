@@ -44,6 +44,7 @@ let products = [
 // }
 
 const server = http.createServer((req, res) => {
+  console.log(req.url);
   switch (req.url) {
     case "/":
       fs.readFile("../public/index.html", "utf8", (err, data) => {
@@ -88,16 +89,96 @@ const server = http.createServer((req, res) => {
       break;
 
     case "/products":
-        res.writeHead(200);
-        res.write(JSON.stringify(products));
-        res.end();
+      res.writeHead(200);
+      res.write(JSON.stringify(products));
+      res.end();
       break;
 
     case "/product":
-        res.writeHead(200);
-        res.write(JSON.stringify(products[0]));
-        res.end();
+      res.writeHead(200);
+      res.write(JSON.stringify(products[0]));
+      res.end();
       break;
+
+      case "/css/index.css":
+      fs.readFile("../public/css/index.css", "utf8", (err, data) => {
+        if (err) {
+          res.writeHead(404);
+          console.log(err);
+        } else {
+          res.writeHead(200);
+          res.write(data);
+        }
+        res.end();
+      });
+      break;
+
+    case "/js/index.js":
+      fs.readFile("../public/js/index.js", "utf8", (err, data) => {
+        if (err) {
+          res.writeHead(404);
+          console.log(err);
+        } else {
+          res.writeHead(200);
+          res.write(data);
+        }
+        res.end();
+      });
+      break;
+
+
+      case "/css/about.css":
+      fs.readFile("../public/css/about.css", "utf8", (err, data) => {
+        if (err) {
+          res.writeHead(404);
+          console.log(err);
+        } else {
+          res.writeHead(200);
+          res.write(data);
+        }
+        res.end();
+      });
+      break;
+
+      case "/js/about.js":
+      fs.readFile("../public/js/about.js", "utf8", (err, data) => {
+        if (err) {
+          res.writeHead(404);
+          console.log(err);
+        } else {
+          res.writeHead(200);
+          res.write(data);
+        }
+        res.end();
+      });
+      break;
+
+      case "/css/sales.css":
+      fs.readFile("../public/css/sales.css", "utf8", (err, data) => {
+        if (err) {
+          res.writeHead(404);
+          console.log(err);
+        } else {
+          res.writeHead(200);
+          res.write(data);
+        }
+        res.end();
+      });
+      break;
+
+      case "/js/sales.js":
+      fs.readFile("../public/js/sales.js", "utf8", (err, data) => {
+        if (err) {
+          res.writeHead(404);
+          console.log(err);
+        } else {
+          res.writeHead(200);
+          res.write(data);
+        }
+        res.end();
+      });
+      break;
+
 
     default:
       res.writeHead(404);
@@ -105,4 +186,5 @@ const server = http.createServer((req, res) => {
       break;
   }
 });
+
 server.listen(port);

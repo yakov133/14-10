@@ -1,0 +1,1 @@
+alert("in index page");
